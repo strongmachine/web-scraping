@@ -2,6 +2,8 @@ import sys
 from flask import Flask, render_template, jsonify, redirect
 import pymongo
 import scrape_mars
+from selenium import webdriver
+
 
 
 app = Flask(__name__)
@@ -14,12 +16,12 @@ collection = db.mars_facts
 
 @app.route('/scrape')
 def scrape():
-   # db.collection.remove()
+#    db.collection.remove()
     mars = scrape_mars.scrape()
     print("\n\n\n")
 
     db.mars_facts.insert_one(mars)
-    return "Some scrapped data"
+    return "Information Scrapped"
 
 
 

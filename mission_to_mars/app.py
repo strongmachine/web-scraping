@@ -6,8 +6,8 @@ import scrape_mars
 
 app = Flask(__name__)
 
-
-client = pymongo.MongoClient()
+conn = 'mongodb://localhost:27017'
+client = pymongo.MongoClient(conn)
 db = client.mars_db
 collection = db.mars_facts
 
@@ -25,7 +25,8 @@ def scrape():
 
 @app.route("/")
 def home():
-    mars = list(db.mars_facts.find())
+    mars = db.mars_facts.find_one()
+    # mars = {"mars_facts_data": news_title}
     print(mars)
     return render_template("index.html", mars = mars)
  

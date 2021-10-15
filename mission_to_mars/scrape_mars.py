@@ -43,7 +43,7 @@ def scrape():
 # +
     news_title = soup.find("div", class_="content_title").text
     news_p = soup.find("div", class_="article_teaser_body").text
-    print(f"Title:{ news_title}")
+    print(f"Title:{news_title}")
     print(f"Paragraph:{news_p}")
 
 
